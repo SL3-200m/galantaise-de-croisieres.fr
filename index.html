@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags for a Single-Page Site -->
+    <title>Galantaise de Croisières - Voyages de Luxe & Aventures Inoubliables</title>
+    <meta name="description"
+        content="Découvrez des croisières de luxe avec Galantaise de Croisières. Explorez nos destinations, de la Méditerranée aux Caraïbes, et réservez votre voyage de rêve.">
+    <meta name="keywords"
+        content="croisières de luxe, voyage, vacances, bateau, Méditerranée, Caraïbes, Galantaise de Croisières, réservation">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Embedded CSS Styles -->
+    <style>
+        /* --- General Setup & Variables --- */
+        :root {
+            --primary-color: #0d2c4b;
+            /* Deep Blue */
+            --secondary-color: #f3a953;
+            /* Gold/Orange */
+            --text-color: #333333;
+            --light-bg-color: #f9f9f9;
+            --white-color: #ffffff;
+            --header-font: 'Playfair Display', serif;
+            --body-font: 'Montserrat', sans-serif;
+            --header-height: 85px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body-font);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--header-font);
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        section {
+            padding: 80px 0;
+            scroll-margin-top: var(--header-height);
+            /* Prevent content from hiding behind sticky header */
+        }
+
+        section:nth-of-type(odd) {
+            background-color: var(--light-bg-color);
+        }
+
+        /* --- Header & Navigation --- */
+        .site-header {
+            background-color: var(--white-color);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: var(--header-height);
+        }
+
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-family: var(--header-font);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .main-nav a {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1rem;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+
+        /* --- Hero Section (Homepage) --- */
+        .hero {
+            background: linear-gradient(rgba(13, 44, 75, 0.7), rgba(13, 44, 75, 0.7)), url('https://images.unsplash.com/photo-1610552050860-5285470a8034?q=80&w=1740&auto=format&fit=crop') no-repeat center center/cover;
+            height: calc(100vh - var(--header-height));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white-color);
+            padding: 0;
+            /* Override default section padding */
+        }
+
+        .hero-content h1 {
+            color: var(--white-color);
+            font-size: 4rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #d68f3e;
+            color: var(--white-color);
+        }
+
+        /* --- Cruises Section --- */
+        .cruise-detailed-card {
+            display: flex;
+            gap: 30px;
+            background: var(--white-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .cruise-detailed-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .cruise-detailed-card img {
+            width: 40%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cruise-detailed-card .cruise-details {
+            width: 60%;
+        }
+
+        .cruise-detailed-card h3 {
+            margin-top: 0;
+        }
+
+        /* --- About Section --- */
+        .about-flex {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* --- Contact Section --- */
+        .contact-form-section {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .contact-form-section h2 {
+            color: var(--white-color);
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: var(--body-font);
+            background-color: #f9f9f9;
+        }
+
+        .contact-form .cta-button {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* --- Footer --- */
+        .site-footer-bottom {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 30px 0;
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        .site-footer-bottom .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--white-color);
+            margin-left: 15px;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- Animation --- */
+        .anim-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .anim-fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .cruise-detailed-card {
+                flex-direction: column;
+            }
+
+            .cruise-detailed-card img,
+            .cruise-detailed-card .cruise-details {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .site-header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero {
+                height: 70vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .about-flex {
+                flex-direction: column;
+            }
+
+            .site-footer-bottom .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">Galantaise de Croisières</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link">Accueil</a></li>
+                    <li><a href="#cruises" class="nav-link">Nos Croisières</a></li>
+                    <li><a href="#about" class="nav-link">À Propos</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Explorez le Monde, une Vague à la Fois</h1>
+                <p>Des expériences uniques sur les plus belles mers du globe.</p>
+                <a href="#cruises" class="cta-button">Découvrir nos voyages</a>
+            </div>
+        </section>
+
+        <!-- Our Cruises Section -->
+        <section id="cruises">
+            <div class="container anim-fade-in">
+                <h2>Nos Croisières de Rêve</h2>
+
+                <div class="cruise-detailed-card">
+                    <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1740&auto=format&fit=crop"
+                        alt="Piscine sur un bateau de croisière en Méditerranée">
+                    <div class="cruise-details">
+                        <h3>Trésors de la Méditerranée</h3>
+                        <p><strong>Durée:</strong> 10 jours / 9 nuits<br><strong>Escales:</strong> Rome, Athènes,
+                            Santorin, Dubrovnik<br>Découvrez l'histoire antique, les plages idylliques et la cuisine
+                            savoureuse de la Méditerranée.</p>
+                        <a href="#contact" class="cta-button">Demander un devis</a>
+                    </div>
+                </div>
+
+                <div class="cruise-detailed-card">
+                    <img src="./image/Navire dans un fjord norvégien.jpg"
+                        alt="Navire dans un fjord norvégien">
+                    <div class="cruise-details">
+                        <h3>Magie des Fjords Norvégiens</h3>
+                        <p><strong>Durée:</strong> 8 jours / 7 nuits<br><strong>Escales:</strong> Bergen,
+                            Geirangerfjord, Tromsø<br>Laissez-vous émerveiller par la majesté des fjords et la chance
+                            d'apercevoir les aurores boréales.</p>
+                        <a href="#contact" class="cta-button">Demander un devis</a>
+                    </div>
+                </div>
+
+                <div class="cruise-detailed-card">
+                    <img src="./image/Plage paradisiaque aux Caraïbes.jpg"
+                        alt="Plage paradisiaque aux Caraïbes">
+                    <div class="cruise-details">
+                        <h3>Évasion Tropicale aux Caraïbes</h3>
+                        <p><strong>Durée:</strong> 12 jours / 11 nuits<br><strong>Escales:</strong> Barbade,
+                            Sainte-Lucie, Antigua<br>Évadez-vous vers le paradis avec ses plages de sable fin et ses
+                            eaux turquoise.</p>
+                        <a href="#contact" class="cta-button">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about">
+            <div class="container anim-fade-in">
+                <h2>Notre Histoire</h2>
+                <div class="about-flex">
+                    <div class="about-text">
+                        <h3>Une Tradition d'Excellence</h3>
+                        <p>Fondée en 2010, Galantaise de Croisières est née d'un rêve : offrir des expériences de voyage
+                            qui allient luxe, découverte et service personnalisé. Nous croyons que chaque voyage doit
+                            être une collection de moments précieux et de souvenirs impérissables.</p>
+                        <p>Notre flotte est composée de navires à taille humaine, conçus pour une atmosphère intime et
+                            élégante. Notre engagement pour le tourisme durable nous pousse à protéger les océans que
+                            nous explorons et à soutenir les communautés locales.</p>
+                    </div>
+                    <div class="about-image">
+                        <iframe width="700" height="350" src="https://www.youtube.com/embed/_p6kMcknI3g?si=WOX9QFjOLQBmO8Qh"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-form-section">
+            <div class="container anim-fade-in">
+                <h2>Contactez-Nous</h2>
+                <form action="#" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom Complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Adresse E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Votre Message</label>
+                        <textarea id="message" name="message" rows="6"
+                            placeholder="Quelle croisière vous intéresse ? Avez-vous des questions ?"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Envoyer le Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer-bottom">
+        <div class="container">
+            <p>© 2024 Galantaise de Croisières. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // --- Script for Fade-in Animation on Scroll ---
+            const animatedElements = document.querySelectorAll('.anim-fade-in');
+            if (animatedElements.length > 0) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                animatedElements.forEach(element => {
+                    observer.observe(element);
+                });
+            }
+
+            // --- Script for Active Navigation Link Highlighting on Scroll ---
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.main-nav .nav-link');
+
+            if (sections.length > 0 && navLinks.length > 0) {
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute('id');
+
+                            // Remove active class from all links
+                            navLinks.forEach(link => {
+                                link.classList.remove('active');
+                            });
+
+                            // Add active class to the link that corresponds to the visible section
+                            const activeLink = document.querySelector(`.main-nav a[href="#${id}"]`);
+                            if (activeLink) {
+                                activeLink.classList.add('active');
+                            }
+                        }
+                    });
+                }, {
+                    rootMargin: '-30% 0px -70% 0px' // This triggers when a section is roughly in the middle of the viewport
+                });
+
+                sections.forEach(section => {
+                    navObserver.observe(section);
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
